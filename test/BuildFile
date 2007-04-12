@@ -4,6 +4,6 @@
 <use name=FWCore/ParameterSet>
 
 <library file=HcalDigiDump.cc name=HcalDigiDump>
-  <flags SEAL_PLUGIN_NAME="HcalDigiDump">
+  <flags EDM_PLUGIN=1>
 </library>
 
