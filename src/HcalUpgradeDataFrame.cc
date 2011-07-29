@@ -36,13 +36,13 @@ void HcalUpgradeDataFrame::setPresamples(int presamples) {
 
 void HcalUpgradeDataFrame::setSample(int relativeSample,
                                 const uint16_t adc,
-                                const uint8_t tdc,
+                                const uint16_t tdc,
                                 const bool dv) { 
 
     int linSample = presamples_ + relativeSample ;
     if ( linSample < MAXSAMPLES && linSample>=0) { 
         adc_[linSample] = adc&0xFF ; 
-        tdc_[linSample] = tdc&0x1F ; 
+        tdc_[linSample] = tdc&0xFFFF ; 
         dv_[linSample] = dv ; 
     }    
 }
