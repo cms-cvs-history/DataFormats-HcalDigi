@@ -28,12 +28,12 @@ public:
   
   bool valid(int iSample=0) const { return dv_[iSample] ; }
   uint16_t adc(int iSample=0) const { return adc_[iSample] ; } 
-  uint8_t tdc(int iSample=0) const { return tdc_[iSample] ; } 
+  uint16_t tdc(int iSample=0) const { return tdc_[iSample] ; } 
   
   void setSize(int size) ; 
   void setPresamples(int presamples) ;
   void setStartingCapId(int capId) { capId_ = capId ; } 
-  void setSample(int relSample, const uint16_t adc, const uint8_t tdc, const bool dv) ; 
+  void setSample(int relSample, const uint16_t adc, const uint16_t tdc, const bool dv) ; 
   
   static const int MAXSAMPLES = 10 ;
 private:
@@ -42,7 +42,7 @@ private:
   int size_, presamples_ ; 
   bool dv_[MAXSAMPLES] ;
   uint16_t adc_[MAXSAMPLES];
-  uint8_t tdc_[MAXSAMPLES] ;
+  uint16_t tdc_[MAXSAMPLES] ;
 };
 
 std::ostream& operator<<(std::ostream&, const HcalUpgradeDataFrame&) ;
