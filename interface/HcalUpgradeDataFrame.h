@@ -4,7 +4,7 @@
 #include <vector>
 #include <ostream>
 #include "DataFormats/HcalDetId/interface/HcalDetId.h"
-
+class HcalQIESample;
 
 /** \class HcalUpgradeDataFrame
       
@@ -29,11 +29,13 @@ public:
   bool valid(int iSample=0) const { return dv_[iSample] ; }
   uint16_t adc(int iSample=0) const { return adc_[iSample] ; } 
   uint16_t tdc(int iSample=0) const { return tdc_[iSample] ; } 
-  
+  HcalQIESample operator[](int iSample) const;
+  bool zsMarkAndPass() const {return false;}
+ 
   void setSize(int size) ; 
   void setPresamples(int presamples) ;
   void setStartingCapId(int capId) { capId_ = capId ; } 
-  void setSample(int relSample, const uint16_t adc, const uint16_t tdc, const bool dv) ; 
+  void setSample(int iSample, uint16_t adc, uint16_t tdc, bool dv) ; 
   
   static const int MAXSAMPLES = 10 ;
 private:
