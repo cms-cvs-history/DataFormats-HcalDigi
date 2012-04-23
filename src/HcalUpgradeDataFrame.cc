@@ -53,10 +53,11 @@ void HcalUpgradeDataFrame::setSample(int iSample,
 
 
 std::ostream& operator<<(std::ostream& s, const HcalUpgradeDataFrame& digi) {
-    s << digi.id() << " " << digi.size() << " samples  " << digi.presamples() << " presamples ";
+    s << digi.id() << " " << digi.size() << " samples  " << digi.presamples() << " presamples \n";
     for (int i=0; i<digi.size(); i++) {
         if ( i < digi.presamples() ) s << " (PRE) " ;
         else s << "       " ;
+	s << int(digi.capId(i)) << " (capId)  ";
         s << int(digi.adc(i)) << " (adc)  " ;
 	s << int(digi.tdc(i)) << " (tdc)  " ;
         if ( digi.valid(i) ) s << " (DV) " ; 
